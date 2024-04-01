@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'FiraGO';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff2) format('woff2'), url(https://cdn.jsdelivr.net/fontsource/fonts/firago@latest/latin-400-normal.woff) format('woff');
+}
+
+.main_content {
+    min-height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #fbfcff;
+}
+
+.valute {
+    margin: 7vh;
+    display: flex;
+    flex-direction: row;
+    gap: 4vh;
+}
+
+.dropdown select {
+    box-shadow: 15px 25px 30px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 2px solid #274156;
+    font-family: FiraGO;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.search-btn {
+    cursor: pointer;
+    padding: 5px 40px;
+    background: #274156;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: FiraGO;
+    font-size: 16px;
+    border: 2px solid #274156;
+}
+
+.search-btn:hover{
+    border: 2px solid #0d5bd1;
+    background: #FFFFFF;
+    color: #274156;
+    font-weight: 600;
+
+}
+
+.card_head img{
+    width: 120px;
+
+}
+
+.saech_Section {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10vh;
+    padding: 20px
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5vh;
+    width: 50%;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+thead {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: #274156;
+    color: #FFFFFF;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

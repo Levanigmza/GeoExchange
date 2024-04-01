@@ -1,0 +1,153 @@
+<div class="main_content">
+    <div class="valute">
+        <div class="dropdown">
+            <select id="dropdown-select" class="dropbtn" [(ngModel)]="selectedCurrency">
+                <option value="">აირჩიეთ ვალუტა</option>
+                <option value="usd">USD-1 აშშ დოლარი</option>
+                <option value="eur">EUR-1 ევრო</option>
+                <option value="gbp">GBP-1 დიდი ბრიტანეთის გირვანქა სტერლინგი</option>
+            </select>
+        </div>
+        <button class="search-btn"  (click)="SearchData()">ძებნა</button>
+    </div>
+</div>
+
+<div class="saech_Section">
+
+    <div class="card">
+        <div class="bank_card">
+            <div class="card_head">
+                <img src="assets/tbc.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ვალუტა</th>
+                        <th>ოფიცალური კურსი</th>
+                        <th>ყიდვა</th>
+                        <th>გაყიდვა</th>
+                        <th>ბოლო განახლება</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{TbcData.currency}}</td>
+                        <td>{{BogData.currentRate}}</td>
+                        <td>{{TbcData.buy }}</td>
+                        <td>{{TbcData.sell }}</td>
+                        <td>{{LastRefreshTbc}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="bank_card">
+            <div class="card_head">
+                <img src="assets/bog.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ვალუტა</th>
+                        <th>ოფიცალური კურსი</th>
+                        <th>ყიდვა</th>
+                        <th>გაყიდვა</th>
+                        <th>ბოლო განახლება</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{BogData.ccy}}</td>
+                        <td>{{BogData.currentRate}}</td>
+                        <td>{{BogData.buyRate }}</td>
+                        <td>{{BogData.sellRate }}</td>
+                        <td>{{LastRefreshBog}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="bank_card">
+            <div class="card_head">
+                <img src="assets/terrabank.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ვალუტა</th>
+                        <th>ოფიცალური კურსი</th>
+                        <th>ყიდვა</th>
+                        <th>გაყიდვა</th>
+                        <th>ბოლო განახლება</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>none</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>{{currentDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        
+
+        <div class="bank_card">
+            <div class="card_head">
+                <img src="assets/credo.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ვალუტა</th>
+                        <th>ოფიცალური კურსი</th>
+                        <th>ყიდვა</th>
+                        <th>გაყიდვა</th>
+                        <th>ბოლო განახლება</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>none</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>{{currentDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="bank_card">
+            <div class="card_head">
+                <img src="assets/crystal.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ვალუტა</th>
+                        <th>ოფიცალური კურსი</th>
+                        <th>ყიდვა</th>
+                        <th>გაყიდვა</th>
+                        <th>ბოლო განახლება</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>none</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>{{currentDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
