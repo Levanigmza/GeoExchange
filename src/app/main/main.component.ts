@@ -91,6 +91,9 @@ export class MainComponent implements OnInit {
       });
     } else {
       this.BogData = '';
+      this.TbcData = '';
+      this.LastRefreshBog  =' ';
+      this.LastRefreshTbc =' ';
     }
   }
 
