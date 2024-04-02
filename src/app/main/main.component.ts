@@ -29,6 +29,10 @@ export class MainComponent implements OnInit {
   constructor(private exhangeRatesService: Apiservice) { }
 
   ngOnInit() {
+    this.BogData = '';
+    this.TbcData = '';
+    this.LastRefreshBog  =' ';
+    this.LastRefreshTbc =' ';
   }
 
 
@@ -91,6 +95,9 @@ export class MainComponent implements OnInit {
       });
     } else {
       this.BogData = '';
+      this.TbcData = '';
+      this.LastRefreshBog  =' ';
+      this.LastRefreshTbc =' ';
     }
   }
 
