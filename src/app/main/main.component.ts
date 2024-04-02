@@ -29,10 +29,7 @@ export class MainComponent implements OnInit {
   constructor(private exhangeRatesService: Apiservice) { }
 
   ngOnInit() {
-    this.BogData = '';
-    this.TbcData = '';
-    this.LastRefreshBog  =' ';
-    this.LastRefreshTbc =' ';
+
   }
 
 
@@ -52,6 +49,7 @@ export class MainComponent implements OnInit {
           if (usdData) {
             this.TbcData = usdData;
             this.LastRefreshTbc = this.getCurrentDate();
+
           } else {
             console.error('USD data not found in response');
           }
@@ -69,6 +67,8 @@ export class MainComponent implements OnInit {
           const usdData = response.commercialRatesList.find((item: any) => item.currency === 'EUR');
           if (usdData) {
             this.TbcData = usdData;
+            this.LastRefreshTbc = this.getCurrentDate();
+
           } else {
             console.error('USD data not found in response');
           }
@@ -86,6 +86,8 @@ export class MainComponent implements OnInit {
           const usdData = response.commercialRatesList.find((item: any) => item.currency === 'GBP');
           if (usdData) {
             this.TbcData = usdData;
+            this.LastRefreshTbc = this.getCurrentDate();
+
           } else {
             console.error('USD data not found in response');
           }
