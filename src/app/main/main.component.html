@@ -11,10 +11,12 @@
         <button class="search-btn"  (click)="SearchData()">ძებნა</button>
     </div>
 </div>
+<div class="loader" *ngIf="loading"></div>
 
-<div class="saech_Section">
+<div class="saech_Section" [ngClass]="{'blur': loading}">
 
     <div class="card">
+
         <div class="bank_card">
             <div class="card_head">
                 <img src="assets/tbc.png">
@@ -32,7 +34,7 @@
                 <tbody>
                     <tr>
                         <td>{{TbcData.currency}}</td>
-                        <td>{{BogData.currentRate}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
                         <td>{{TbcData.buy }}</td>
                         <td>{{TbcData.sell }}</td>
                         <td>{{LastRefreshTbc}}</td>
@@ -59,7 +61,7 @@
                 <tbody>
                     <tr>
                         <td>{{BogData.ccy}}</td>
-                        <td>{{BogData.currentRate}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
                         <td>{{BogData.buyRate }}</td>
                         <td>{{BogData.sellRate }}</td>
                         <td>{{LastRefreshBog}}</td>
@@ -71,7 +73,7 @@
 
         <div class="bank_card">
             <div class="card_head">
-                <img src="assets/terrabank.png">
+                <img src="assets/Valuto.png">
             </div>
             <table>
                 <thead>
@@ -85,11 +87,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>none</td>
-                        <td>0.00</td>
-                        <td>0.00</td>
-                        <td>0.00</td>
-                        <td>{{currentDate}}</td>
+                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
+                        <td>{{ValutoData.sell}}</td>
+                        <td>{{ValutoData.buy}}</td>
+                        <td>{{LastRefreshValuto}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -114,7 +116,7 @@
                 <tbody>
                     <tr>
                         <td>none</td>
-                        <td>0.00</td>
+                        <td>{{UsdNbg_Rate}}</td>
                         <td>0.00</td>
                         <td>0.00</td>
                         <td>{{currentDate}}</td>
@@ -140,7 +142,7 @@
                 <tbody>
                     <tr>
                         <td>none</td>
-                        <td>0.00</td>
+                        <td>{{UsdNbg_Rate}}</td>
                         <td>0.00</td>
                         <td>0.00</td>
                         <td>{{currentDate}}</td>
