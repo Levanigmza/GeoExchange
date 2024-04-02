@@ -41,18 +41,8 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.BogData = '';
     this.TbcData = '';
-    this.NbgData = '';
-    this.ValutoData='';
-
-
-    this.LastRefreshBog = ' ';
-    this.LastRefreshTbc = ' ';
-    this.LastRefreshValuto = ' ';
-
-
-    this.UsdNbg_Rate = ' ';
-
-
+    this.LastRefreshBog  =' ';
+    this.LastRefreshTbc =' ';
   }
 
 
@@ -88,7 +78,6 @@ export class MainComponent implements OnInit {
           const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
           if (usdData) {
             this.LastRefreshTbc = this.getCurrentDate();
-            this.TbcData = usdData;
           } else {
             console.error('USD data not found in response');
           }
@@ -132,6 +121,8 @@ export class MainComponent implements OnInit {
           if (usdData) {
             this.LastRefreshTbc = this.getCurrentDate();
             this.TbcData = usdData;
+            this.LastRefreshTbc = this.getCurrentDate();
+
           } else {
             console.error('USD data not found in response');
           }
@@ -173,7 +164,6 @@ export class MainComponent implements OnInit {
           if (usdData) {
             this.LastRefreshTbc = this.getCurrentDate();
             this.TbcData = usdData;
-
           } else {
             console.error('USD data not found in response');
           }
