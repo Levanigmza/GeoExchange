@@ -73,20 +73,20 @@ export class MainComponent implements OnInit {
       });
 
   //tbc
-      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
-        if (response && response.commercialRatesList) {
-          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
-          if (usdData) {
-            this.TbcData = usdData;
+  this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+    if (response && response.commercialRatesList) {
+      const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
+      if (usdData) {
+        this.TbcData = usdData;
+        this.LastRefreshTbc = this.getCurrentDate();
 
-            this.LastRefreshTbc = this.getCurrentDate();
-          } else {
-            console.error('USD data not found in response');
-          }
-        } else {
-          console.error('Invalid response from TBC API');
-        }
-      });
+      } else {
+        console.error('USD data not found in response');
+      }
+    } else {
+      console.error('Invalid response from TBC API');
+    }
+  });
 
       /// valuto
       this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
