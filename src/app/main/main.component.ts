@@ -72,11 +72,13 @@ export class MainComponent implements OnInit {
         }
       });
 
-      /// bog
+  //tbc
       this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
         if (response && response.commercialRatesList) {
           const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
           if (usdData) {
+            this.TbcData = usdData;
+
             this.LastRefreshTbc = this.getCurrentDate();
           } else {
             console.error('USD data not found in response');
@@ -119,7 +121,6 @@ export class MainComponent implements OnInit {
         if (response && response.commercialRatesList) {
           const usdData = response.commercialRatesList.find((item: any) => item.currency === 'EUR');
           if (usdData) {
-            this.LastRefreshTbc = this.getCurrentDate();
             this.TbcData = usdData;
             this.LastRefreshTbc = this.getCurrentDate();
 
