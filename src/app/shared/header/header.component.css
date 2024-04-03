@@ -118,3 +118,29 @@
     border-color: white;
   }
   
+
+  .underline {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #274156;
+    color: white;
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #FFFFFF;
+    transition: all 1s;
+  }
+  
+  .underline:after {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #274156;
+    color: white;
+  }
+  .active-tab {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #274156;
+    color: white;
+  }

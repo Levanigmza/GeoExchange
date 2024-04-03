@@ -8,14 +8,18 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [HttpClientModule, FormsModule,CommonModule],
+  imports: [HttpClientModule, FormsModule, CommonModule],
   viewProviders: [Apiservice],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
 
-  loading: boolean = false; 
+  loading: boolean = false;
+  multiplication_1 : boolean = true;
+  multiplication_100 :boolean =false;
+  multiplication_1000 :boolean =false;
+
 
   BogData: any;
   TbcData: any;
@@ -41,17 +45,33 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.BogData = '';
     this.TbcData = '';
-    this.LastRefreshBog  =' ';
-    this.LastRefreshTbc =' ';
+    this.LastRefreshBog = ' ';
+    this.LastRefreshTbc = ' ';
+    this.multiplication_1 = true;
+    this.multiplication_100= false;
+    this.multiplication_1000= false;
+
   }
 
 
 
   SearchData() {
-    this.loading = true; 
+    this.loading = true;
 
 
-    if (this.selectedCurrency === 'usd') {
+    if (this.selectedCurrency === 'USD') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
+
       ///ოფიციალური
       this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
         const currenciesList = response[0].currencies;
@@ -64,7 +84,7 @@ export class MainComponent implements OnInit {
 
 
 
-      /// tbc
+      /// bog
       this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
         this.BogData = response.data.find((item: any) => item.ccy === 'USD');
         if (this.BogData) {
@@ -72,21 +92,21 @@ export class MainComponent implements OnInit {
         }
       });
 
-  //tbc
-  this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
-    if (response && response.commercialRatesList) {
-      const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
-      if (usdData) {
-        this.TbcData = usdData;
-        this.LastRefreshTbc = this.getCurrentDate();
+      //tbc
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'USD');
+          if (usdData) {
+            this.TbcData = usdData;
+            this.LastRefreshTbc = this.getCurrentDate();
 
-      } else {
-        console.error('USD data not found in response');
-      }
-    } else {
-      console.error('Invalid response from TBC API');
-    }
-  });
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
 
       /// valuto
       this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
@@ -100,7 +120,20 @@ export class MainComponent implements OnInit {
       });
 
 
-    } else if (this.selectedCurrency === 'eur') {
+    }
+
+    else if (this.selectedCurrency === 'EUR') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
 
       ///ოფიციალური
       this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
@@ -143,7 +176,18 @@ export class MainComponent implements OnInit {
         }
       });
 
-    } else if (this.selectedCurrency === 'gbp') {
+    } else if (this.selectedCurrency === 'GBP') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
 
       ///ოფიციალური
       this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
@@ -185,26 +229,323 @@ export class MainComponent implements OnInit {
       });
 
 
-    } else {
+    } else if (this.selectedCurrency === 'CHF') {
       this.BogData = '';
       this.TbcData = '';
       this.NbgData = '';
-      this.ValutoData='';
-  
-  
+      this.ValutoData = '';
       this.LastRefreshBog = ' ';
       this.LastRefreshTbc = ' ';
       this.LastRefreshValuto = ' ';
-  
-  
       this.UsdNbg_Rate = ' ';
-  
-  
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
+
+      ///ოფიციალური
+      this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
+        const currenciesList = response[0].currencies;
+        const usdCurrency = currenciesList.find((currency: any) => currency.code === 'CHF');
+        if (usdCurrency) {
+          this.UsdNbg_Rate = usdCurrency.rate;
+        }
+      });
+
+      this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
+        this.BogData = response.data.find((item: any) => item.ccy === 'CHF');
+        this.LastRefreshBog = this.getCurrentDate();
+
+      });
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'CHF');
+          if (usdData) {
+            this.LastRefreshTbc = this.getCurrentDate();
+            this.TbcData = usdData;
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
+
+      /// valuto
+      this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
+        const currencies = response.data.currencies;
+        this.ValutoData = currencies['CHFGEL'];
+
+        if (this.ValutoData) {
+          this.LastRefreshValuto = this.getCurrentDate();
+
+        }
+      });
+
+
+    } 
+    else if (this.selectedCurrency === 'TRY') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
+
+
+      ///ოფიციალური
+      this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
+        const currenciesList = response[0].currencies;
+        const usdCurrency = currenciesList.find((currency: any) => currency.code === 'TRY');
+        if (usdCurrency) {
+          this.UsdNbg_Rate = usdCurrency.rate;
+        }
+      });
+
+      this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
+        this.BogData = response.data.find((item: any) => item.ccy === 'TRY');
+        this.LastRefreshBog = this.getCurrentDate();
+
+      });
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'TRY');
+          if (usdData) {
+            this.LastRefreshTbc = this.getCurrentDate();
+            this.TbcData = usdData;
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
+
+      /// valuto
+      this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
+        const currencies = response.data.currencies;
+        this.ValutoData = currencies['TRYGEL'];
+
+        if (this.ValutoData) {
+          this.LastRefreshValuto = this.getCurrentDate();
+
+        }
+      });
+
+
+    } 
+
+    else if (this.selectedCurrency === 'AZN') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
+
+
+      ///ოფიციალური
+      this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
+        const currenciesList = response[0].currencies;
+        const usdCurrency = currenciesList.find((currency: any) => currency.code === 'AZN');
+        if (usdCurrency) {
+          this.UsdNbg_Rate = usdCurrency.rate;
+        }
+      });
+
+      this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
+        this.BogData = response.data.find((item: any) => item.ccy === 'AZN');
+        this.LastRefreshBog = this.getCurrentDate();
+
+      });
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'AZN');
+          if (usdData) {
+            this.LastRefreshTbc = this.getCurrentDate();
+            this.TbcData = usdData;
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
+
+      /// valuto
+      this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
+        const currencies = response.data.currencies;
+        this.ValutoData = currencies['AZNGEL'];
+
+        if (this.ValutoData) {
+          this.LastRefreshValuto = this.getCurrentDate();
+
+        }
+      });
+
+
+    } 
+    else if (this.selectedCurrency === 'RUR') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+
+      this.multiplication_1 = false;
+      this.multiplication_100= true;
+      this.multiplication_1000= false;
+
+      ///ოფიციალური
+      this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
+        const currenciesList = response[0].currencies;
+        const usdCurrency = currenciesList.find((currency: any) => currency.code === 'RUB');
+        if (usdCurrency) {
+          this.UsdNbg_Rate = usdCurrency.rate;
+        }
+      });
+
+
+
+      this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
+        this.BogData = response.data.find((item: any) => item.ccy === 'RUR');
+        this.LastRefreshBog = this.getCurrentDate();
+
+      });
+
+
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'RUR');
+          if (usdData) {
+            this.LastRefreshTbc = this.getCurrentDate();
+            parseInt(usdData.sell)*100;
+            this.TbcData = usdData
+
+
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
+
+      /// valuto
+      this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
+        const currencies = response.data.currencies;
+        this.ValutoData = currencies['RURGEL'];
+
+        if (this.ValutoData) {
+          this.LastRefreshValuto = this.getCurrentDate();
+
+        }
+      });
+
+
+    } 
+    else if (this.selectedCurrency === 'AMD') {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+      this.UsdNbg_Rate = ' ';
+      this.multiplication_1 = false;
+      this.multiplication_100= false;
+      this.multiplication_1000= true;
+
+      ///ოფიციალური
+      this.exhangeRatesService.getExchangeRatesNbg().subscribe(response => {
+        const currenciesList = response[0].currencies;
+        const usdCurrency = currenciesList.find((currency: any) => currency.code === 'AMD');
+        if (usdCurrency) {
+          this.UsdNbg_Rate = usdCurrency.rate;
+        }
+      });
+
+
+
+      this.exhangeRatesService.GetExchangeRatesBog().subscribe(response => {
+        this.BogData = response.data.find((item: any) => item.ccy === 'AMD');
+        this.LastRefreshBog = this.getCurrentDate();
+
+      });
+
+
+      this.exhangeRatesService.getExchangeRatesTbc().subscribe(response => {
+        if (response && response.commercialRatesList) {
+          const usdData = response.commercialRatesList.find((item: any) => item.currency === 'AMD');
+          if (usdData) {
+            this.LastRefreshTbc = this.getCurrentDate();
+            parseInt(usdData.sell)*100;
+            this.TbcData = usdData
+
+
+          } else {
+            console.error('USD data not found in response');
+          }
+        } else {
+          console.error('Invalid response from TBC API');
+        }
+      });
+
+      /// valuto
+      this.exhangeRatesService.GetExchangeRatesValuto().subscribe(response => {
+        const currencies = response.data.currencies;
+        this.ValutoData = currencies['AMDGEL'];
+
+        if (this.ValutoData) {
+          this.LastRefreshValuto = this.getCurrentDate();
+
+        }
+      });
+
+
+    } 
+
+
+
+    
+    
+    else {
+      this.BogData = '';
+      this.TbcData = '';
+      this.NbgData = '';
+      this.ValutoData = '';
+
+
+      this.LastRefreshBog = ' ';
+      this.LastRefreshTbc = ' ';
+      this.LastRefreshValuto = ' ';
+
+      this.multiplication_1 = true;
+      this.multiplication_100= false;
+      this.multiplication_1000= false;
+
+
+      this.UsdNbg_Rate = ' ';
+
+
     }
 
 
     setTimeout(() => {
-      this.loading = false; 
+      this.loading = false;
     }, 2000);
   }
 
@@ -225,7 +566,7 @@ export class MainComponent implements OnInit {
     const minute: string = String(today.getMinutes()).padStart(2, '0');
     const second: string = String(today.getSeconds()).padStart(2, '0');
     return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-}
+  }
 
 
 }

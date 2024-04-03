@@ -3,9 +3,15 @@
         <div class="dropdown">
             <select id="dropdown-select" class="dropbtn" [(ngModel)]="selectedCurrency">
                 <option value="">აირჩიეთ ვალუტა</option>
-                <option value="usd">USD-1 აშშ დოლარი</option>
-                <option value="eur">EUR-1 ევრო</option>
-                <option value="gbp">GBP-1 დიდი ბრიტანეთის გირვანქა სტერლინგი</option>
+                <option value="USD">USD - 1 აშშ დოლარი</option>
+                <option value="EUR">EUR - 1 ევრო</option>
+                <option value="GBP">GBP - 1 დიდი ბრიტანეთის გირვანქა სტერლინგი</option>
+                <option value="CHF"> CHF - 1 შვეიცარული ფრანკი</option>
+                <option value="TRY">TRY - 1 თურქული ლირა </option>
+                <option value="AZN">AZN - 1 აზერბაიჯანული მანათი</option>
+                <option value="RUR">RUR - 100 რუსული რუბლი</option>
+                <option value="AMD">AMD - 1000 სომხური დრამი</option>
+
             </select>
         </div>
         <button class="search-btn"  (click)="SearchData()">ძებნა</button>
@@ -32,11 +38,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngIf="multiplication_1" >
                         <td>{{TbcData.currency}}</td>
                         <td>{{UsdNbg_Rate}}</td>
                         <td>{{TbcData.buy }}</td>
                         <td>{{TbcData.sell }}</td>
+                        <td>{{LastRefreshTbc}}</td>
+                    </tr>
+
+                    <tr *ngIf="multiplication_100" >
+                        <td>{{TbcData.currency}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
+                        <td>{{TbcData.buy*100 }}</td>
+                        <td>{{TbcData.sell*100 }}</td>
+                        <td>{{LastRefreshTbc}}</td>
+                    </tr>
+
+                    <tr *ngIf="multiplication_1000" >
+                        <td>{{TbcData.currency}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
+                        <td>{{TbcData.buy*1000 }}</td>
+                        <td>{{TbcData.sell*1000 }}</td>
                         <td>{{LastRefreshTbc}}</td>
                     </tr>
                 </tbody>
@@ -66,6 +88,7 @@
                         <td>{{BogData.sellRate }}</td>
                         <td>{{LastRefreshBog}}</td>
                     </tr>
+
                 </tbody>
             </table>
 
@@ -86,11 +109,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngIf="multiplication_1">
                         <td>{{ValutoData.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ValutoData.sell}}</td>
                         <td>{{ValutoData.buy}}</td>
+                        <td>{{ValutoData.sell}}</td>
+                        <td>{{LastRefreshValuto}}</td>
+                    </tr>
+                    <tr *ngIf="multiplication_1000">
+                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
+                        <td>{{ValutoData.buy*1000}}</td>
+                        <td>{{ValutoData.sell*1000}}</td>
+                        <td>{{LastRefreshValuto}}</td>
+                    </tr>
+
+                    <tr *ngIf="multiplication_100">
+                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{UsdNbg_Rate}}</td>
+                        <td>{{ValutoData.buy*100}}</td>
+                        <td>{{ValutoData.sell*100}}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
                 </tbody>

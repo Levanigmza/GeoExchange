@@ -24,7 +24,7 @@ export class Apiservice {
       'apikey',
       'J5TDduvxJxqbylk3FJZMc0PTXSATxATv'
     );
-    const currencies = 'usd,eur,gbp';
+    const currencies = 'usd,eur,gbp,chf,try,azn,rur,amd';
     const url = `${this.TBC_url}?currency=${currencies}`;
     return this.http.get<any>(url, { headers });
   }
