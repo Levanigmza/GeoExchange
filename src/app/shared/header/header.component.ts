@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common'; 
@@ -13,18 +13,31 @@ export class HeaderComponent {
 
   IsCurrencysActive: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private renderer: Renderer2) {}
 
   Navigation_Currency() {
     this.router.navigate(['/ExchangeRates']);
-    this.IsCurrencysActive  = true;
+    this.IsCurrencysActive = true;
+    const btn = document.querySelector('.btn');
+    if (this.IsCurrencysActive) {
+      this.renderer.addClass(btn, 'active');
+    } else {
+      this.renderer.removeClass(btn, 'active');
+    }
   }
+  
     
   ngOnInit() {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.IsCurrencysActive = event.url === '/ExchangeRates';
-      }
-    });
+    this.IsCurrencysActive  = false;
+
+  }
+
+  MainPAge(){
+    this.router.navigate(['']);
+    this.IsCurrencysActive  = false;
+    const btn = document.querySelector('.btn');
+
+    this.renderer.removeClass(btn, 'active');
+
   }
 }

@@ -11,6 +11,10 @@ export class Apiservice {
   private Valuto_url = 'https://valuto.ge/wp-json/rest-currency-list/v3/currencies';
   private Nbg_Url = 'https://nbg.gov.ge/gw/api/ct/monetarypolicy/currencies';
 
+  private BestRates = 'https://analytics.metric.ge/api/currencies/top/';
+
+
+  private CrystalUrl = 'https://crystal.ge/api/wi/rate/v1/cryst?key=52ef35743f3c4f5027d82f051c258241';
 
   constructor(private http: HttpClient) { }
 
@@ -40,4 +44,12 @@ export class Apiservice {
     return this.http.get<any>(url);
   }
 
+
+  getExchangeRatesCrystal(): Observable<any> {
+    return this.http.get<any>(this.CrystalUrl);
+  }
+
+  getCurrencyBestRates(): Observable<any> {
+    return this.http.get<any>(this.BestRates);
+  }
 }

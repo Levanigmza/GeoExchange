@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
   TbcData: any;
   ValutoData: any;
   NbgData: any;
+  CrystalData:any
 
   selectedCurrency: string = '';
 
@@ -116,6 +117,17 @@ export class MainComponent implements OnInit {
         if (this.ValutoData) {
           this.LastRefreshValuto = this.getCurrentDate();
 
+        }
+      });
+
+      //// crystal 
+      this.exhangeRatesService.getExchangeRatesCrystal().subscribe(response => {
+        if (response && response.success && response.data) {
+          const currencyRates = JSON.parse(response.data);
+          const usdData = currencyRates.CurrencyRate.find((rate: any) => rate.ISO === 'USD');
+          if (usdData) {
+            this.CrystalData = usdData;
+          }
         }
       });
 
@@ -567,6 +579,10 @@ export class MainComponent implements OnInit {
     const second: string = String(today.getSeconds()).padStart(2, '0');
     return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
   }
+
+
+
+
 
 
 }

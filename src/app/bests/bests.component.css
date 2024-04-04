@@ -1,0 +1,68 @@
+.bestvalues {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.bestvalues h2 {
+    color: #000000;
+
+}
+
+.content_wrapper {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+    width: 80%;
+    height: 400px;
+    background-color: #0A2540;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.currency-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f2f2f2;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.currency-table th,
+.currency-table td {
+    padding: 10px;
+    border: 2px solid #1e3852;
+    text-align: center;
+}
+
+.currency-table th {
+    color: #f2f2f2;
+    font-weight: bold;
+}
+
+.currency-table tbody tr:nth-child(even) {
+    color: #f2f2f2;
+}
+
+.currency-table tbody tr:hover {
+    color: #f2f2f2;
+}
+
+.change-positive {
+    color: green;
+}
+
+.change-negative {
+    color: red;
+}
+
+.bank-name {
+    color: #ffba08 !important;
+}

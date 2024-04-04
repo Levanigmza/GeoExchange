@@ -1,13 +1,14 @@
 <div class="header">
     <div class ="header_content">
-        <div class="header_logo">
+        <div class="header_logo" (click)="MainPAge()">
             <img src="assets/2024236.png">
             <span>Geo Currency</span>
         </div>
         <div class="navigation_content">
-            <div class="Banks" [ngClass]="{'underline': IsCurrencysActive}">
-                <span class="btn" (click)="Navigation_Currency()">ვალუტა</span>
+            <div class="Banks">
+                <span class="btn" (click)="Navigation_Currency()" [ngClass]="{'active': IsCurrencysActive}">ვალუტა</span>
             </div>
+            
             <div class="Banks">
                 <span class="btn">ბანკები</span>
             </div>

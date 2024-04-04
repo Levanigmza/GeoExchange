@@ -119,16 +119,16 @@
                     <tr *ngIf="multiplication_1000">
                         <td>{{ValutoData.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ValutoData.buy*1000}}</td>
-                        <td>{{ValutoData.sell*1000}}</td>
+                        <td>{{ +(ValutoData.buy*1000).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData.sell*1000).toFixed(3) }}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
 
                     <tr *ngIf="multiplication_100">
                         <td>{{ValutoData.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ValutoData.buy*100}}</td>
-                        <td>{{ValutoData.sell*100}}</td>
+                        <td>{{ +(ValutoData.buy * 100).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData.sell * 100).toFixed(3) }}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
                 </tbody>
@@ -181,8 +181,8 @@
                     <tr>
                         <td>none</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>0.00</td>
-                        <td>0.00</td>
+                        <td>{{CrystalData.AMOUNT_BUY}}</td>
+                        <td>{{CrystalData.AMOUNT_SELL}}</td>
                         <td>{{currentDate}}</td>
                     </tr>
                 </tbody>
