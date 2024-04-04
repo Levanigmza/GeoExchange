@@ -1,7 +1,7 @@
 import { Component, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
-import { NgClass } from '@angular/common'; 
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -12,8 +12,10 @@ import { NgClass } from '@angular/common';
 export class HeaderComponent {
 
   IsCurrencysActive: boolean = false;
+  IsCurrencysActivecrypto: boolean = false;
 
-  constructor(private router: Router, private renderer: Renderer2) {}
+
+  constructor(private router: Router, private renderer: Renderer2) { }
 
   Navigation_Currency() {
     this.router.navigate(['/ExchangeRates']);
@@ -25,16 +27,29 @@ export class HeaderComponent {
       this.renderer.removeClass(btn, 'active');
     }
   }
-  
-    
-  ngOnInit() {
-    this.IsCurrencysActive  = false;
 
+  Navigation_crypto() {
+    this.router.navigate(['/crypto']);
+    this.IsCurrencysActivecrypto = true;
+    const btn = document.querySelector('.btn');
+    if (this.IsCurrencysActive) {
+      this.renderer.addClass(btn, 'active');
+    } else {
+      this.renderer.removeClass(btn, 'active');
+    }
   }
 
-  MainPAge(){
+
+  ngOnInit() {
+    this.IsCurrencysActive = false;
+    this.IsCurrencysActivecrypto = false;
+  }
+
+  MainPAge() {
     this.router.navigate(['']);
-    this.IsCurrencysActive  = false;
+    this.IsCurrencysActive = false;
+    this.IsCurrencysActivecrypto = false;
+
     const btn = document.querySelector('.btn');
 
     this.renderer.removeClass(btn, 'active');
