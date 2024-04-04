@@ -121,15 +121,15 @@ export class MainComponent implements OnInit {
       });
 
       //// crystal 
-      this.exhangeRatesService.getExchangeRatesCrystal().subscribe(response => {
-        if (response && response.success && response.data) {
-          const currencyRates = JSON.parse(response.data);
-          const usdData = currencyRates.CurrencyRate.find((rate: any) => rate.ISO === 'USD');
-          if (usdData) {
-            this.CrystalData = usdData;
-          }
-        }
-      });
+      // this.exhangeRatesService.getExchangeRatesCrystal().subscribe(response => {
+      //   if (response && response.success && response.data) {
+      //     const currencyRates = JSON.parse(response.data);
+      //     const usdData = currencyRates.CurrencyRate.find((rate: any) => rate.ISO === 'USD');
+      //     if (usdData) {
+      //       this.CrystalData = usdData;
+      //     }
+      //   }
+      // });
 
 
     }
@@ -153,7 +153,6 @@ export class MainComponent implements OnInit {
         const usdCurrency = currenciesList.find((currency: any) => currency.code === 'EUR');
         if (usdCurrency) {
           this.UsdNbg_Rate = usdCurrency.rate;
-          // Additional handling if needed
         }
       });
 

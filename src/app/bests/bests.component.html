@@ -11,21 +11,21 @@
                 <tr>
                     <th>ვალუტა</th>
                     <th>ოფიციალური კურსი</th>
-                    <th>ცვლადი (%)</th>
-                    <th>საუკეთესო ყიდვა (ბანკი)</th>
-                    <th>საუკეთესო გაყიდვა (ბანკი)</th>
+                    <th>შეცვლა (24სთ)</th>
+                    <th>საუკეთესო ყიდვა</th>
+                    <th>საუკეთესო გაყიდვა</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let currency of currencyData">
-                    <td>{{ currency.code }}</td>
-                    <td>{{ currency.exchangeRate }}</td>
-                    <td [ngClass]="{ 'change-positive': currency.change > 0, 'change-negative': currency.change < 0 }">
-                        {{ currency.change }}%</td>
+                    <td>{{ currency?.code }}</td>
+                    <td>{{ currency?.exchangeRate }}</td>
+                    <td [ngClass]="{ 'change-positive': currency.change > 0, 'change-negative': currency?.change < 0 }">
+                        {{ currency?.change }}%</td>
                     <!-- <td>{{ currency.buyPrice.value }} ({{ currency.buyPrice.bankName }})</td> -->
-                    <td>{{ currency.buyPrice.value }} <span class="bank-name">({{ currency.buyPrice.bankName
+                    <td> <img src="assets/lari-sign.png"> {{ currency.buyPrice.value }} <span class="bank-name">({{ currency?.buyPrice.bankName
                     }})</span></td>
-                    <td>{{ currency.sellPrice.value }} <span class="bank-name">({{ currency.sellPrice.bankName
+                    <td> <img src="assets/lari-sign.png">{{ currency.sellPrice.value }} <span class="bank-name">({{ currency?.sellPrice.bankName
                             }})</span></td>
                 </tr>
             </tbody>

@@ -39,26 +39,26 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="multiplication_1" >
-                        <td>{{TbcData.currency}}</td>
+                        <td>{{TbcData?.currency}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{TbcData.buy }}</td>
-                        <td>{{TbcData.sell }}</td>
+                        <td>{{TbcData?.buy }}</td>
+                        <td>{{TbcData?.sell }}</td>
                         <td>{{LastRefreshTbc}}</td>
                     </tr>
 
                     <tr *ngIf="multiplication_100" >
-                        <td>{{TbcData.currency}}</td>
+                        <td>{{TbcData?.currency}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{TbcData.buy*100 }}</td>
-                        <td>{{TbcData.sell*100 }}</td>
+                        <td>{{TbcData?.buy*100 }}</td>
+                        <td>{{TbcData?.sell*100 }}</td>
                         <td>{{LastRefreshTbc}}</td>
                     </tr>
 
                     <tr *ngIf="multiplication_1000" >
-                        <td>{{TbcData.currency}}</td>
+                        <td>{{TbcData?.currency}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{TbcData.buy*1000 }}</td>
-                        <td>{{TbcData.sell*1000 }}</td>
+                        <td>{{TbcData?.buy*1000 }}</td>
+                        <td>{{TbcData?.sell*1000 }}</td>
                         <td>{{LastRefreshTbc}}</td>
                     </tr>
                 </tbody>
@@ -82,10 +82,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{BogData.ccy}}</td>
+                        <td>{{BogData?.ccy}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{BogData.buyRate }}</td>
-                        <td>{{BogData.sellRate }}</td>
+                        <td>{{BogData?.buyRate }}</td>
+                        <td>{{BogData?.sellRate }}</td>
                         <td>{{LastRefreshBog}}</td>
                     </tr>
 
@@ -110,25 +110,25 @@
                 </thead>
                 <tbody>
                     <tr *ngIf="multiplication_1">
-                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{ValutoData?.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ValutoData.buy}}</td>
-                        <td>{{ValutoData.sell}}</td>
+                        <td>{{ValutoData?.buy}}</td>
+                        <td>{{ValutoData?.sell}}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
                     <tr *ngIf="multiplication_1000">
-                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{ValutoData?.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ +(ValutoData.buy*1000).toFixed(3) }}</td>
-                        <td>{{ +(ValutoData.sell*1000).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData?.buy*1000).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData?.sell*1000).toFixed(3) }}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
 
                     <tr *ngIf="multiplication_100">
-                        <td>{{ValutoData.CcFrom}}</td>
+                        <td>{{ValutoData?.CcFrom}}</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{ +(ValutoData.buy * 100).toFixed(3) }}</td>
-                        <td>{{ +(ValutoData.sell * 100).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData?.buy * 100).toFixed(3) }}</td>
+                        <td>{{ +(ValutoData?.sell * 100).toFixed(3) }}</td>
                         <td>{{LastRefreshValuto}}</td>
                     </tr>
                 </tbody>
@@ -181,8 +181,8 @@
                     <tr>
                         <td>none</td>
                         <td>{{UsdNbg_Rate}}</td>
-                        <td>{{CrystalData.AMOUNT_BUY}}</td>
-                        <td>{{CrystalData.AMOUNT_SELL}}</td>
+                        <td>{{CrystalData?.AMOUNT_BUY}}</td>
+                        <td>{{CrystalData?.AMOUNT_SELL}}</td>
                         <td>{{currentDate}}</td>
                     </tr>
                 </tbody>
